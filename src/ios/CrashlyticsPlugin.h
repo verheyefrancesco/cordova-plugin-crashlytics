@@ -10,6 +10,17 @@
 
 @interface CrashlyticsPlugin : CDVPlugin <UIAlertViewDelegate>
 
-- (void)show:(CDVInvokedUrlCommand*)command;
+- (void)setUserIdentifier:(CDVInvokedUrlCommand*)command;
+- (void)setUserName:(CDVInvokedUrlCommand*)command;
+- (void)setEmail:(CDVInvokedUrlCommand*)command;
+
+- (void)addLog:(CDVInvokedUrlCommand*)command;
+
+- (void)setObjectValueForKey:(CDVInvokedUrlCommand*)command;
+- (void)setIntValueForKey:(CDVInvokedUrlCommand*)command;
+- (void)setBoolValueForKey:(CDVInvokedUrlCommand*)command;
+- (void)setFloatValueForKey:(CDVInvokedUrlCommand*)command;
+
+- (void)sendCrash:(CDVInvokedUrlCommand*)command;
 
 @end

@@ -6,6 +6,7 @@
 //
 
 #import "CrashlyticsPlugin.h"
+#import <Crashlytics/Crashlytics.h>
 
 @implementation CrashlyticsPlugin{
     NSString *_title;
@@ -14,93 +15,98 @@
     NSString *_negativeButtonText;
 }
 
-- (void)show:(CDVInvokedUrlCommand*)command
+#pragma mark - Logging
+- (void)addLog:(CDVInvokedUrlCommand*)command
 {
     NSMutableDictionary *options = [command argumentAtIndex:0];
-    
-    [self setDefaults];
-    
-    [self readParams:options];
-    
-    [self showAlertView];
-}
-
--(void) setDefaults
-{
-    _title = @"Title";
-    _description = nil;
-    _positiveButtonText = @"Yes";
-    _negativeButtonText = @"No";
-}
-
--(void) readParams:(NSDictionary*) params
-{
-    if([params objectForKey:@"title"])
+    NSString *logMessage = [options objectForKey:@"message"];
+    if(logMessage)
     {
-        _title = [params objectForKey:@"title"];
-    }
-    if([params objectForKey:@"description"])
-    {
-        _description = [params objectForKey:@"description"];
-    }
-    if([params objectForKey:@"positiveButtonText"])
-    {
-        _positiveButtonText = [params objectForKey:@"positiveButtonText"];
-    }
-    if([params objectForKey:@"negativeButtonText"])
-    {
-        _negativeButtonText = [params objectForKey:@"negativeButtonText"];
+        CLSNSLog(@"%@",logMessage);
     }
 }
 
--(void) showAlertView
-{
-    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:_title
-                                                   message:_description
-                                                  delegate:self
-                                         cancelButtonTitle:_negativeButtonText
-                                         otherButtonTitles:_positiveButtonText, nil];
-    [alert show];
-}
+#pragma mark - User Information
 
-#pragma mark UIActionSheetDelegate
-- (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+- (void)setUserIdentifier:(CDVInvokedUrlCommand*)command
 {
-    if (buttonIndex == 0)
+    NSMutableDictionary *options = [command argumentAtIndex:0];
+    NSString *identifier = [options objectForKey:@"value"];
+    if(identifier)
     {
-        // negativeButton
-        [self jsActionSelected:NO];
-    }
-    else
-    {
-        // positiveButton
-        [self jsActionSelected:YES];
+        [[Crashlytics sharedInstance] setUserIdentifier:identifier];
     }
 }
 
-#pragma mark - JS API
--(void) jsActionSelected:(BOOL)isPositiveButton
+- (void)setUserName:(CDVInvokedUrlCommand*)command
 {
-    NSMutableDictionary *resultDic = [NSMutableDictionary dictionary];
-    if(isPositiveButton)
+    NSMutableDictionary *options = [command argumentAtIndex:0];
+    NSString *username = [options objectForKey:@"value"];
+    if(username)
     {
-        [resultDic setValue:@"positiveButton" forKey:@"action"];
-        [resultDic setValue:_positiveButtonText forKey:@"buttonText"];
+        [[Crashlytics sharedInstance] setUserName:username];
     }
-    else
-    {
-        [resultDic setValue:@"negativeButton" forKey:@"action"];
-        [resultDic setValue:_negativeButtonText forKey:@"buttonText"];
-    }
+}
 
-    NSError * err;
-    NSData * jsonData = [NSJSONSerialization dataWithJSONObject:resultDic options:0 error:&err];
-    NSString * result = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-    
-    result = [result stringByReplacingOccurrencesOfString:@"\"" withString:@"&#34;"];
-    
-    NSString* jsCallback = [NSString stringWithFormat:@"confirmPanelPlugin._actionSelected(\"%@\");", result];
-    [self.commandDelegate evalJs:jsCallback];
+- (void)setEmail:(CDVInvokedUrlCommand*)command
+{
+    NSMutableDictionary *options = [command argumentAtIndex:0];
+    NSString *email = [options objectForKey:@"value"];
+    if(email)
+    {
+        [[Crashlytics sharedInstance] setUserEmail:email];
+    }
+}
+
+#pragma mark ) Crash
+- (void)sendCrash:(CDVInvokedUrlCommand*)command
+{
+    [[Crashlytics sharedInstance] crash];
+}
+
+#pragma mark - Custom Keys
+- (void)setObjectValueForKey:(CDVInvokedUrlCommand*)command
+{
+    NSMutableDictionary *options = [command argumentAtIndex:0];
+    NSString *value = [options objectForKey:@"value"];
+    NSString *key = [options objectForKey:@"key"];
+    if(value && key)
+    {
+        [[Crashlytics sharedInstance] setObjectValue:value forKey:key];
+    }
+}
+
+- (void)setIntValueForKey:(CDVInvokedUrlCommand*)command
+{
+    NSMutableDictionary *options = [command argumentAtIndex:0];
+    NSInteger value = [[options objectForKey:@"value"] integerValue];
+    NSString *key = [options objectForKey:@"key"];
+    if(key)
+    {
+        [[Crashlytics sharedInstance] setIntValue:value forKey:key];
+    }
+}
+
+- (void)setBoolValueForKey:(CDVInvokedUrlCommand*)command
+{
+    NSMutableDictionary *options = [command argumentAtIndex:0];
+    BOOL value = [[options objectForKey:@"value"] boolValue];
+    NSString *key = [options objectForKey:@"key"];
+    if(key)
+    {
+        [[Crashlytics sharedInstance] setBoolValue:value forKey:key];
+    }
+}
+
+- (void)setFloatValueForKey:(CDVInvokedUrlCommand*)command
+{
+    NSMutableDictionary *options = [command argumentAtIndex:0];
+    float value = [[options objectForKey:@"value"] floatValue];
+    NSString *key = [options objectForKey:@"key"];
+    if(key)
+    {
+        [[Crashlytics sharedInstance] setFloatValue:value forKey:key];
+    }
 }
 
 @end

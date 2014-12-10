@@ -1,7 +1,3 @@
-/**
-  Phonegap ConfirmPanel Plugin
-*/
-
 var exec = require('cordova/exec');
 /**
  * Constructor
@@ -10,37 +6,29 @@ function CrashlyticsPlugin() {
     this._callback;
 }
 
-/**
- * show - true to show the ad, false to hide the ad
- */
-CrashlyticsPlugin.prototype.show = function(options, cb) {
+CrashlyticsPlugin.prototype.addLog = function(message) {
 
     var defaults = {
-        title : 'Title',
-        description: '',
-        positiveButtonText: 'Yes',
-        negativeButtonText: 'No'
+        message : message
     };
-
-    for (var key in defaults) {
-        if (typeof options[key] !== "undefined")
-            defaults[key] = options[key];
-    }
-    this._callback = cb;
 
     exec(null, 
       null, 
       "CrashlyticsPlugin", 
-      "show",
-      [defaults]
-    );
+      "addLog",
+      [defaults]);
 };
 
-CrashlyticsPlugin.prototype._actionSelected = function(json) {
-    json = json.replace(/&#34;/g, '"');
-    if (this._callback)
-        this._callback({status:'success', data: JSON.parse(json)});  
-}
+CrashlyticsPlugin.prototype.sendCrash = function() {
+
+    var defaults = {};
+
+    exec(null, 
+      null, 
+      "CrashlyticsPlugin", 
+      "sendCrash",
+      [defaults]);
+};
 
 var crashlyticsPlugin = new CrashlyticsPlugin();
 module.exports = crashlyticsPlugin;
