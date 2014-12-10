@@ -1,4 +1,4 @@
-# ConfirmPanel Plugin for Cordova/PhoneGap 3.0 (iOS and Android)
+# Crashlytics Plugin for Cordova/PhoneGap 3.0 (iOS and Android)
 
 
 ## Installation
@@ -8,88 +8,31 @@
 2) Add a plugin to your project using Cordova CLI:
 
 ```bash
-cordova plugin add https://francescoverheye@bitbucket.org/francescoverheye/checkroom-plugin-confirmpanel.git
+cordova plugin add https://github.com/francescobitmunks/cordova-plugin-crashlytics
 ```
 Or using PhoneGap CLI:
 
 ```bash
-phonegap local plugin add https://francescoverheye@bitbucket.org/francescoverheye/checkroom-plugin-confirmpanel.git
+phonegap local plugin add https://github.com/francescobitmunks/cordova-plugin-crashlytics
 ```
 
 ## Usage
 
 ```js
-var title = "My title";
-var description = "My description";
-var positiveButtonText = "Yes!";
-var negativeButtonText = "No!";
-            
-var options = {
-    title: title,
-    description: description,
-    positiveButtonText: positiveButtonText,
-    negativeButtonText: negativeButtonText
-};
+function addLog() {
+    crashlyticsPlugin.addLog('This my a log message from JS!');
+}
 
-confirmPanelPlugin.show(options, 
-    function(result){
-        alert("result " + JSON.stringify(result));  
-    });
+function sendCrash(){
+    crashlyticsPlugin.sendCrash();
 }
 ```
 
-## Options
+## Methods
 
-### title - iOS, Android
-The title for the panel.
+### addLog('message') - iOS
+Add log for the crash.
 
-Type: String
+### sendCrash() - iOS
+Send a (fatal) crash to the backand of CrashLytics.
 
-Default: `Title`
-
-### description - iOS, Android
-The description for the panel.
-
-Type: String
-
-Default: ``
-
-### positiveButtonText - iOS, Android
-Label for positive button.
-
-Type: String
-
-Default: `Yes`
-
-### negativeButtonText - iOS, Android
-Label for negative button.
-
-Type: String
-
-Default: `No`
-
-## Requirements
-- PhoneGap 3.0 or newer / Cordova 3.0 or newer
-- Android 2.3.1 or newer / iOS 5 or newer
-
-## Example
-
-```js
-var title = "My title";
-var description = "My description";
-var positiveButtonText = "Yes!";
-var negativeButtonText = "No!";
-            
-var options = {
-    title: title,
-    description: description,
-    positiveButtonText: positiveButtonText,
-    negativeButtonText: negativeButtonText
-};
-
-confirmPanelPlugin.show(options, 
-    function(result){
-        alert("result " + JSON.stringify(result));  
-    });
-}
-```
