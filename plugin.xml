@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
+        id="com.checkroom.plugin.confirmpanel"
+        version="0.4.0">
+
+    <name>CrashlyticsPlugin</name>
+	
+    <description>Cordova Crashlytics Plugin for iOS and Android</description>
+	
+    <license>MIT</license>
+	
+    <keywords>cordova,craslytics,ios,,android</keywords>
+
+    <!-- android -->
+    <!--
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="ConfirmPanelPlugin">
+                <param name="android-package" value="com.checkroom.plugin.confirmpanel.ConfirmPanelPlugin"/>
+            </feature>
+        </config-file>
+        
+        <js-module src="www/android/ConfirmPanelPlugin.js" name="ConfirmPanelPlugin">
+            <clobbers target="confirmPanelPlugin" />
+        </js-module>
+    
+        <source-file src="src/android/ConfirmPanelPlugin.java" target-dir="src/com/checkroom/plugin/confirmpanel" />
+        
+    </platform>
+    -->
+
+    <!-- ios -->
+    <platform name="ios">
+
+        <config-file target="config.xml" parent="/*">
+		<feature name="CrashlyticsPlugin">
+			<param name="ios-package" value="CrashlyticsPlugin"/>
+		</feature>
+        </config-file>
+
+        <js-module src="www/ios/CrashlyticsPlugin.js" name="CrashlyticsPlugin">
+            <clobbers target="crashlyticsPlugin" />
+        </js-module>
+
+	    <header-file src="src/ios/CrashlyticsPlugin.h" />
+	    <source-file src="src/ios/CrashlyticsPlugin.m" />
+
+    </platform>
+
+</plugin>
