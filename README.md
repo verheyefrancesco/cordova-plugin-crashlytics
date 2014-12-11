@@ -44,28 +44,28 @@ function sendCrashWithData() {
 
 ## Methods
 
-### setUserIdentifier('identifier') - iOS, Android
+### setUserIdentifier(value) - iOS, Android
 Set the user identifier value
 
-### setUserName('username') - iOS, Android
+### setUserName(value) - iOS, Android
 Set the username
 
-### setUserEmail('email') - iOS, Android
+### setUserEmail(value) - iOS, Android
 Set the user email
 
-### setStringValueForKey('message') - iOS, Android
+### setStringValueForKey(value, key) - iOS, Android
 Set String value for key
 
-### setIntValueForKey('message') - iOS, Android
+### setIntValueForKey(value, key) - iOS, Android
 Set integer value for key
 
-### setBoolValueForKey('message') - iOS, Android
+### setBoolValueForKey(value, key) - iOS, Android
 Set boolean for key
 
-### setFloatValueForKey('message') - iOS, Android
+### setFloatValueForKey(value, key) - iOS, Android
 Set float for key
 
-### addLog('message') - iOS, Android
+### addLog('log message') - iOS, Android
 Add log for the crash.
 
 ### sendCrash() - iOS, Android
