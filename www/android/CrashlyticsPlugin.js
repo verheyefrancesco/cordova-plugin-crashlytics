@@ -69,6 +69,62 @@ CrashlyticsPlugin.prototype.setUserEmail = function(userEmail) {
       [defaults]);
 };
 
+CrashlyticsPlugin.prototype.setStringValueForKey = function(value, key) {
+
+    var defaults = {
+      value: value,
+      key: key
+    };
+
+     cordova.exec(null, 
+      null, 
+      "CrashlyticsPlugin", 
+      "setStringValueForKey",
+      [defaults]);
+};
+
+CrashlyticsPlugin.prototype.setIntValueForKey = function(value, key) {
+
+    var defaults = {
+      value: value,
+      key: key
+    };
+
+     cordova.exec(null, 
+      null, 
+      "CrashlyticsPlugin", 
+      "setIntValueForKey",
+      [defaults]);
+};
+
+CrashlyticsPlugin.prototype.setBoolValueForKey = function(value, key) {
+
+    var defaults = {
+      value: value,
+      key: key
+    };
+
+     cordova.exec(null, 
+      null, 
+      "CrashlyticsPlugin", 
+      "setBoolValueForKey",
+      [defaults]);
+};
+
+CrashlyticsPlugin.prototype.setFloatValueForKey = function(value, key) {
+
+    var defaults = {
+      value: value,
+      key: key
+    };
+
+     cordova.exec(null, 
+      null, 
+      "CrashlyticsPlugin", 
+      "setFloatValueForKey",
+      [defaults]);
+};
+
 var crashlyticsPanel = new CrashlyticsPlugin();
 module.exports = crashlyticsPanel;
 

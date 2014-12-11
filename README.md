@@ -44,30 +44,30 @@ function sendCrashWithData() {
 
 ## Methods
 
-### setUserIdentifier('identifier') - iOS
+### setUserIdentifier('identifier') - iOS, Android
 Set the user identifier value
 
-### setUserName('username') - iOS
+### setUserName('username') - iOS, Android
 Set the username
 
-### setUserEmail('email') - iOS
+### setUserEmail('email') - iOS, Android
 Set the user email
 
-### setStringValueForKey('message') - iOS
+### setStringValueForKey('message') - iOS, Android
 Set String value for key
 
-### setIntValueForKey('message') - iOS
+### setIntValueForKey('message') - iOS, Android
 Set integer value for key
 
-### setBoolValueForKey('message') - iOS
+### setBoolValueForKey('message') - iOS, Android
 Set boolean for key
 
-### setFloatValueForKey('message') - iOS
+### setFloatValueForKey('message') - iOS, Android
 Set float for key
 
-### addLog('message') - iOS
+### addLog('message') - iOS, Android
 Add log for the crash.
 
-### sendCrash() - iOS
+### sendCrash() - iOS, Android
 Send a (fatal) crash to the backand of CrashLytics.
 

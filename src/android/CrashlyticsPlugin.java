@@ -28,6 +28,14 @@ public class CrashlyticsPlugin extends CordovaPlugin {
 			setUserName(data, callbackContext);
 		} else if (action.equals("setUserEmail")) {
 			setUserEmail(data, callbackContext);
+		} else if (action.equals("setStringValueForKey")) {
+			setStringValueForKey(data, callbackContext);
+		} else if (action.equals("setIntValueForKey")) {
+			setIntValueForKey(data, callbackContext);
+		} else if (action.equals("setBoolValueForKey")) {
+			setBoolValueForKey(data, callbackContext);
+		} else if (action.equals("setFloatValueForKey")) {
+			setFloatValueForKey(data, callbackContext);
 		}
 		return true;
 	}
@@ -37,6 +45,29 @@ public class CrashlyticsPlugin extends CordovaPlugin {
 		this.cordova.getActivity().runOnUiThread(new Runnable() {
 			@Override
 			public void run() {
+				int i = 0;
+				i++;
+				i++;
+				i++;
+				i++;
+				i++;
+				i++;
+				i++;
+				i++;
+				i++;
+				i++;
+				i++;
+				i++;
+				i++;
+				i++;
+				i++;
+				i++;
+				i++;
+				i++;
+				i++;
+				i++;
+				i++;
+				i++;
 				throw new RuntimeException("This is a crash");
 			}
 		});
@@ -88,6 +119,66 @@ public class CrashlyticsPlugin extends CordovaPlugin {
 		String email = getValueFromData(data);
 		if (email != null) {
 			Crashlytics.setUserEmail(email);
+		}
+	}
+
+	private void setStringValueForKey(final JSONArray data,
+			final CallbackContext callbackContext) {
+		String value = getValueFromData(data);
+		String key = getKeyFromData(data);
+		if (value != null && key != null) {
+			Crashlytics.setString(key, value);
+		}
+	}
+
+	private void setIntValueForKey(final JSONArray data,
+			final CallbackContext callbackContext) {
+		int value = -1;
+		try {
+			JSONObject obj = data.getJSONObject(0);
+			if (obj.has("value")) {
+				value = obj.getInt("value");
+			}
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		String key = getKeyFromData(data);
+		if (value != -1 && key != null) {
+			Crashlytics.setInt(key, value);
+		}
+	}
+
+	private void setBoolValueForKey(final JSONArray data,
+			final CallbackContext callbackContext) {
+		boolean value = true;
+		try {
+			JSONObject obj = data.getJSONObject(0);
+			if (obj.has("value")) {
+				value = obj.getBoolean("value");
+			}
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		String key = getKeyFromData(data);
+		if (key != null) {
+			Crashlytics.setBool(key, value);
+		}
+	}
+
+	private void setFloatValueForKey(final JSONArray data,
+			final CallbackContext callbackContext) {
+		float value = -1;
+		try {
+			JSONObject obj = data.getJSONObject(0);
+			if (obj.has("value")) {
+				value = obj.getLong("value");
+			}
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		String key = getKeyFromData(data);
+		if (value != -1 && key != null) {
+			Crashlytics.setFloat(key, value);
 		}
 	}
 
