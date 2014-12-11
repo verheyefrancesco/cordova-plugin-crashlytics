@@ -12,7 +12,7 @@
 
 - (void)setUserIdentifier:(CDVInvokedUrlCommand*)command;
 - (void)setUserName:(CDVInvokedUrlCommand*)command;
-- (void)setEmail:(CDVInvokedUrlCommand*)command;
+- (void)setUserEmail:(CDVInvokedUrlCommand*)command;
 
 - (void)addLog:(CDVInvokedUrlCommand*)command;
 

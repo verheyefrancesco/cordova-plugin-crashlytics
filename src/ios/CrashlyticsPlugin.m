@@ -48,7 +48,7 @@
     }
 }
 
-- (void)setEmail:(CDVInvokedUrlCommand*)command
+- (void)setUserEmail:(CDVInvokedUrlCommand*)command
 {
     NSMutableDictionary *options = [command argumentAtIndex:0];
     NSString *email = [options objectForKey:@"value"];
