@@ -65,7 +65,7 @@ Set boolean for key
 ### setFloatValueForKey(value, key) - iOS, Android
 Set float for key
 
-### addLog('log message') - iOS, Android
+### addLog(value) - iOS, Android
 Add log for the crash.
 
 ### sendCrash() - iOS, Android
