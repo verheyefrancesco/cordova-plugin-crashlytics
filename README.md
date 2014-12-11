@@ -19,16 +19,44 @@ phonegap local plugin add https://github.com/francescobitmunks/cordova-plugin-cr
 ## Usage
 
 ```js
-function addLog() {
-    crashlyticsPlugin.addLog('This my a log message from JS!');
-}
+function sendCrashWithData() {
+	crashlyticsPlugin.setUserIdentifier('TheIdentifier');
+    crashlyticsPlugin.setUserName('Francesco Verheye');
+    crashlyticsPlugin.setUserEmail('verheye.francesco@gmail.com');
 
-function sendCrash(){
+    crashlyticsPlugin.setStringValueForKey('MyString', 'stringkey');
+    crashlyticsPlugin.setIntValueForKey(200, 'intkey');
+    crashlyticsPlugin.setBoolValueForKey(true, 'boolkey');
+    crashlyticsPlugin.setFloatValueForKey(1.5, 'floatkey');
+
+    crashlyticsPlugin.addLog('This my a log message from JS!');
+    crashlyticsPlugin.addLog('This is another log message from JS!');
     crashlyticsPlugin.sendCrash();
 }
 ```
 
 ## Methods
+
+### setUserIdentifier('identifier') - iOS
+Set the user identifier value
+
+### setUserName('username') - iOS
+Set the username
+
+### setUserEmail('email') - iOS
+Set the user email
+
+### setStringValueForKey('message') - iOS
+Set String value for key
+
+### setIntValueForKey('message') - iOS
+Set integer value for key
+
+### setBoolValueForKey('message') - iOS
+Set boolean for key
+
+### setFloatValueForKey('message') - iOS
+Set float for key
 
 ### addLog('message') - iOS
 Add log for the crash.
