@@ -45,29 +45,6 @@ public class CrashlyticsPlugin extends CordovaPlugin {
 		this.cordova.getActivity().runOnUiThread(new Runnable() {
 			@Override
 			public void run() {
-				int i = 0;
-				i++;
-				i++;
-				i++;
-				i++;
-				i++;
-				i++;
-				i++;
-				i++;
-				i++;
-				i++;
-				i++;
-				i++;
-				i++;
-				i++;
-				i++;
-				i++;
-				i++;
-				i++;
-				i++;
-				i++;
-				i++;
-				i++;
 				throw new RuntimeException("This is a crash");
 			}
 		});
