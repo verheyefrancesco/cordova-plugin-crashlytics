@@ -12,7 +12,7 @@ CrashlyticsPlugin.prototype.addLog = function(message) {
         message: message
     };
 
-	cordova.exec(callback, 
+	cordova.exec(null, 
 		null, 
 		"CrashlyticsPlugin", 
 		"addLog",
@@ -23,11 +23,50 @@ CrashlyticsPlugin.prototype.sendCrash = function() {
   
 	var defaults = {};
 
-	cordova.exec(callback, 
+	cordova.exec(null, 
 		null, 
 		"CrashlyticsPlugin", 
 		"sendCrash",
 		[defaults]);
+};
+
+CrashlyticsPlugin.prototype.setUserIdentifier = function(userIdentifier) {
+
+    var defaults = {
+      value: userIdentifier
+    };
+
+    cordova.exec(null, 
+      null, 
+      "CrashlyticsPlugin", 
+      "setUserIdentifier",
+      [defaults]);
+};
+
+CrashlyticsPlugin.prototype.setUserName = function(userName) {
+
+    var defaults = {
+      value: userName
+    };
+
+    cordova.exec(null, 
+      null, 
+      "CrashlyticsPlugin", 
+      "setUserName",
+      [defaults]);
+};
+
+CrashlyticsPlugin.prototype.setUserEmail = function(userEmail) {
+
+    var defaults = {
+      value: userEmail
+    };
+
+    cordova.exec(null, 
+      null, 
+      "CrashlyticsPlugin", 
+      "setUserEmail",
+      [defaults]);
 };
 
 var crashlyticsPanel = new CrashlyticsPlugin();
