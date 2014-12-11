@@ -1,42 +1,42 @@
-var exec = require('cordova/exec');
+
 /**
  * Constructor
  */
 function CrashlyticsPlugin() {
-    this._callback;
+  //this._callback;
 }
 
 CrashlyticsPlugin.prototype.addLog = function(message) {
-
-    var defaults = {
-        message : message
+  
+	var defaults = {
+        message: message
     };
 
-    exec(null, 
-      null, 
-      "CrashlyticsPlugin", 
-      "addLog",
-      [defaults]);
+	cordova.exec(callback, 
+		null, 
+		"CrashlyticsPlugin", 
+		"addLog",
+		[defaults]);
 };
 
 CrashlyticsPlugin.prototype.sendCrash = function() {
+  
+	var defaults = {};
 
-    var defaults = {};
-
-    exec(null, 
-      null, 
-      "CrashlyticsPlugin", 
-      "sendCrash",
-      [defaults]);
+	cordova.exec(callback, 
+		null, 
+		"CrashlyticsPlugin", 
+		"sendCrash",
+		[defaults]);
 };
 
-var crashlyticsPlugin = new CrashlyticsPlugin();
-module.exports = crashlyticsPlugin;
+var crashlyticsPanel = new CrashlyticsPlugin();
+module.exports = crashlyticsPanel;
 
 // Make plugin work under window.plugins
 if (!window.plugins) {
     window.plugins = {};
 }
-if (!window.plugins.crashlyticsPlugin) {
-    window.plugins.crashlyticsPlugin = crashlyticsPlugin;
+if (!window.plugins.crashlyticsPanel) {
+    window.plugins.crashlyticsPanel = crashlyticsPanel;
 }
