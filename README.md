@@ -7,7 +7,12 @@
 
 1) Make sure that you have [Node](http://nodejs.org/) and [Cordova CLI](https://github.com/apache/cordova-cli) or [PhoneGap's CLI](https://github.com/mwbrooks/phonegap-cli) installed on your machine.
 
-2) Add a plugin to your project using Cordova CLI:
+2) Add Crashlytics plugin (IDE plugin) to the Android / iOS project
+https://www.crashlytics.com/downloads
+
+3) Create a native crash. Go to step 4 if you can see the crash report on the dashboard.
+
+4) Add a plugin to your project using Cordova CLI:
 
 ```bash
 cordova plugin add https://github.com/francescobitmunks/cordova-plugin-crashlytics
