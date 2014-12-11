@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
-        id="com.checkroom.plugin.confirmpanel"
+        id="com.checkroom.plugin.crashlytics"
         version="0.4.0">
 
     <name>CrashlyticsPlugin</name>
@@ -13,22 +13,20 @@
     <keywords>cordova,craslytics,ios,,android</keywords>
 
     <!-- android -->
-    <!--
     <platform name="android">
         <config-file target="res/xml/config.xml" parent="/*">
-            <feature name="ConfirmPanelPlugin">
-                <param name="android-package" value="com.checkroom.plugin.confirmpanel.ConfirmPanelPlugin"/>
+            <feature name="CrashlyticsPlugin">
+                <param name="android-package" value="com.checkroom.plugin.crashlytics.CrashlyticsPlugin"/>
             </feature>
         </config-file>
         
-        <js-module src="www/android/ConfirmPanelPlugin.js" name="ConfirmPanelPlugin">
-            <clobbers target="confirmPanelPlugin" />
+        <js-module src="www/android/CrashlyticsPlugin.js" name="CrashlyticsPlugin">
+            <clobbers target="crashlyticsPlugin" />
         </js-module>
     
-        <source-file src="src/android/ConfirmPanelPlugin.java" target-dir="src/com/checkroom/plugin/confirmpanel" />
+        <source-file src="src/android/CrashlyticsPlugin.java" target-dir="src/com/checkroom/plugin/crashlytics" />
         
     </platform>
-    -->
 
     <!-- ios -->
     <platform name="ios">
