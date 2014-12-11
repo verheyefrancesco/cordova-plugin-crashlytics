@@ -1,5 +1,7 @@
 # Crashlytics Plugin for Cordova/PhoneGap 3.0 (iOS and Android)
 
+![Alt text](/screenshots/crashreport/crashreport-keys.png?raw=true "Keys")
+![Alt text](/screenshots/crashreport/crashreport-logs.png?raw=true "Logs")
 
 ## Installation
 
