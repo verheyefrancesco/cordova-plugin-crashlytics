@@ -1,4 +1,4 @@
-package com.checkroom.plugin.confirmpanel;
+package com.checkroom.plugin.crashlytics;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
@@ -10,8 +10,8 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.util.Log;
 
-public class ConfirmPanelPlugin extends CordovaPlugin {
-	private final String pluginName = "ConfirmPanel";
+public class CrashlyticsPlugin extends CordovaPlugin {
+	private final String pluginName = "CrashlyticsPlugin";
 
 	private static final String ARG_TITLE = "title";
 	private static final String ARG_DESCRIPTION = "description";
