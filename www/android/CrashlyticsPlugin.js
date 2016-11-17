@@ -30,6 +30,17 @@ CrashlyticsPlugin.prototype.sendCrash = function() {
 		[defaults]);
 };
 
+CrashlyticsPlugin.prototype.sendNonFatalCrash = function() {
+  
+	var defaults = {};
+
+	cordova.exec(null, 
+		null, 
+		"CrashlyticsPlugin", 
+		"sendNonFatalCrash",
+		[defaults]);
+};
+
 CrashlyticsPlugin.prototype.setUserIdentifier = function(userIdentifier) {
 
     var defaults = {
@@ -124,6 +135,8 @@ CrashlyticsPlugin.prototype.setFloatValueForKey = function(value, key) {
       "setFloatValueForKey",
       [defaults]);
 };
+
+
 
 var crashlyticsPanel = new CrashlyticsPlugin();
 module.exports = crashlyticsPanel;

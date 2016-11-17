@@ -20,7 +20,11 @@ public class CrashlyticsPlugin extends CordovaPlugin {
 
 		if (action.equals("sendCrash")) {
 			sendCrash(data, callbackContext);
-		} else if (action.equals("addLog")) {
+		}
+		else if(action.equals("sendNonFatalCrash")){
+			sendNonFatalCrash(data, callbackContext);
+		}
+		 else if (action.equals("addLog")) {
 			addLog(data, callbackContext);
 		} else if (action.equals("setUserIdentifier")) {
 			setUserIdentifier(data, callbackContext);
