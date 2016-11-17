@@ -71,3 +71,6 @@ Add log for the crash.
 ### sendCrash() - iOS, Android
 Send a (fatal) crash to the backand of CrashLytics.
 
+### sendNonFatalCrash() - iOS, Android
+Send a non-fatal crash to the backand of CrashLytics.
+
