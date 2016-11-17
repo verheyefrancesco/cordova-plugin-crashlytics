@@ -50,11 +50,18 @@ public class CrashlyticsPlugin extends CordovaPlugin {
 			@Override
 			public void run() 
 			{
-				String errorMessage = "This is a crash";
-				JSONObject obj = data.getJSONObject(0);
-				if(obj.has("message"))
-					errorMessage = obj.getString("message");
-				throw new RuntimeException(errorMessage);
+				try 
+				{
+					String errorMessage = "This is a crash";
+					JSONObject obj = data.getJSONObject(0);
+					if(obj.has("message")) errorMessage = obj.getString("message");
+					throw new RuntimeException(errorMessage);
+				}
+				catch (JSONException e) 
+				{
+					e.printStackTrace();
+				}
+
 			}
 		});
 	}
@@ -63,12 +70,20 @@ public class CrashlyticsPlugin extends CordovaPlugin {
 			final CallbackContext callbackContext) {
 		this.cordova.getActivity().runOnUiThread(new Runnable() {
 			@Override
-			public void run() {
+			public void run() 
+			{
+				try
+				{
 				String errorMessage = "Sending non fatal crash from JS";
 				JSONObject obj = data.getJSONObject(0);
 				if(obj.has("message"))
 					errorMessage = obj.getString("message");
 				Crashlytics.logException(new Throwable(errorMessage));
+				}
+				catch (JSONException e) 
+				{
+					e.printStackTrace();
+				}
 			}
 		});
 	}
