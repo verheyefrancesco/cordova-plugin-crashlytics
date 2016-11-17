@@ -19,9 +19,9 @@ CrashlyticsPlugin.prototype.addLog = function(message) {
 		[defaults]);
 };
 
-CrashlyticsPlugin.prototype.sendCrash = function() {
+CrashlyticsPlugin.prototype.sendCrash = function(message) {
   
-	var defaults = {};
+	var defaults = {message: message};
 
 	cordova.exec(null, 
 		null, 
@@ -30,9 +30,9 @@ CrashlyticsPlugin.prototype.sendCrash = function() {
 		[defaults]);
 };
 
-CrashlyticsPlugin.prototype.sendNonFatalCrash = function() {
+CrashlyticsPlugin.prototype.sendNonFatalCrash = function(message) {
   
-	var defaults = {};
+	var defaults = {message: message};
 
 	cordova.exec(null, 
 		null, 

@@ -48,8 +48,13 @@ public class CrashlyticsPlugin extends CordovaPlugin {
 			final CallbackContext callbackContext) {
 		this.cordova.getActivity().runOnUiThread(new Runnable() {
 			@Override
-			public void run() {
-				throw new RuntimeException("This is a crash");
+			public void run() 
+			{
+				String errorMessage = "This is a crash";
+				JSONObject obj = data.getJSONObject(0);
+				if(obj.has("message"))
+					errorMessage = obj.getString("message");
+				throw new RuntimeException(errorMessage);
 			}
 		});
 	}
@@ -59,8 +64,11 @@ public class CrashlyticsPlugin extends CordovaPlugin {
 		this.cordova.getActivity().runOnUiThread(new Runnable() {
 			@Override
 			public void run() {
-				Crashlytics.logException(new Throwable(
-						"Sending non fatal crash from JS"));
+				String errorMessage = "Sending non fatal crash from JS";
+				JSONObject obj = data.getJSONObject(0);
+				if(obj.has("message"))
+					errorMessage = obj.getString("message");
+				Crashlytics.logException(new Throwable(errorMessage));
 			}
 		});
 	}
