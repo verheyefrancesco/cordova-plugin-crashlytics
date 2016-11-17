@@ -19,14 +19,25 @@ CrashlyticsPlugin.prototype.addLog = function(message) {
 		[defaults]);
 };
 
-CrashlyticsPlugin.prototype.sendCrash = function() {
+CrashlyticsPlugin.prototype.sendCrash = function(message) {
   
-	var defaults = {};
+	var defaults = {message: message};
 
 	cordova.exec(null, 
 		null, 
 		"CrashlyticsPlugin", 
 		"sendCrash",
+		[defaults]);
+};
+
+CrashlyticsPlugin.prototype.sendNonFatalCrash = function(message) {
+  
+	var defaults = {message: message};
+
+	cordova.exec(null, 
+		null, 
+		"CrashlyticsPlugin", 
+		"sendNonFatalCrash",
 		[defaults]);
 };
 
@@ -124,6 +135,8 @@ CrashlyticsPlugin.prototype.setFloatValueForKey = function(value, key) {
       "setFloatValueForKey",
       [defaults]);
 };
+
+
 
 var crashlyticsPanel = new CrashlyticsPlugin();
 module.exports = crashlyticsPanel;

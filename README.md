@@ -38,7 +38,12 @@ function sendCrashWithData() {
 
     crashlyticsPlugin.addLog('This my a log message from JS!');
     crashlyticsPlugin.addLog('This is another log message from JS!');
+    //ios
     crashlyticsPlugin.sendCrash();
+    
+    //android
+    crashlyticsPlugin.sendCrash('my crash');
+    crashlyticsPlugin.sendNonFatalCrash('my non-fatal error');
 }
 ```
 
@@ -68,6 +73,13 @@ Set float for key
 ### addLog(value) - iOS, Android
 Add log for the crash.
 
-### sendCrash() - iOS, Android
+### sendCrash() - iOS
 Send a (fatal) crash to the backand of CrashLytics.
+
+### sendCrash(exceptionMessage) - Android
+Send a (fatal) crash to the backand of CrashLytics.
+
+
+### sendNonFatalCrash(exceptionMessage) - Android
+Send a non-fatal crash to the backand of CrashLytics.
 

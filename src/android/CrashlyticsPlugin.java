@@ -20,7 +20,11 @@ public class CrashlyticsPlugin extends CordovaPlugin {
 
 		if (action.equals("sendCrash")) {
 			sendCrash(data, callbackContext);
-		} else if (action.equals("addLog")) {
+		}
+		else if(action.equals("sendNonFatalCrash")){
+			sendNonFatalCrash(data, callbackContext);
+		}
+		 else if (action.equals("addLog")) {
 			addLog(data, callbackContext);
 		} else if (action.equals("setUserIdentifier")) {
 			setUserIdentifier(data, callbackContext);
@@ -44,8 +48,20 @@ public class CrashlyticsPlugin extends CordovaPlugin {
 			final CallbackContext callbackContext) {
 		this.cordova.getActivity().runOnUiThread(new Runnable() {
 			@Override
-			public void run() {
-				throw new RuntimeException("This is a crash");
+			public void run() 
+			{
+				try 
+				{
+					String errorMessage = "This is a crash";
+					JSONObject obj = data.getJSONObject(0);
+					if(obj.has("message")) errorMessage = obj.getString("message");
+					throw new RuntimeException(errorMessage);
+				}
+				catch (JSONException e) 
+				{
+					e.printStackTrace();
+				}
+
 			}
 		});
 	}
@@ -54,9 +70,20 @@ public class CrashlyticsPlugin extends CordovaPlugin {
 			final CallbackContext callbackContext) {
 		this.cordova.getActivity().runOnUiThread(new Runnable() {
 			@Override
-			public void run() {
-				Crashlytics.logException(new Throwable(
-						"Sending non fatal crash from JS"));
+			public void run() 
+			{
+				try
+				{
+				String errorMessage = "Sending non fatal crash from JS";
+				JSONObject obj = data.getJSONObject(0);
+				if(obj.has("message"))
+					errorMessage = obj.getString("message");
+				Crashlytics.logException(new Throwable(errorMessage));
+				}
+				catch (JSONException e) 
+				{
+					e.printStackTrace();
+				}
 			}
 		});
 	}
