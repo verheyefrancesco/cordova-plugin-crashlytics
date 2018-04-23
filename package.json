@@ -1,0 +1,16 @@
+{
+  "name": "cordova-plugin-crashlytics",
+  "version": "0.4.0",
+  "description": "Cordova Crashlytics Plugin for iOS and Android",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nnishimura/cordova-plugin-crashlytics"
+  },
+  "keywords": [
+    "cordova",
+    "craslytics",
+    "ios",
+    "android"
+  ],
+  "license": "MIT"
+}
